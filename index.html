@@ -6,7 +6,7 @@
     <title>Project Euler Problem 2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+
 </head>
 <body>
     <h1>Project Euler Problem 2: Even Fibonacci numbers</h1>
@@ -15,6 +15,58 @@
     <p>1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...</p>
     <p>By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.</p>
 
+    <h2>Solution:</h2>
+
+    <h3>Make an array with the entire Fibonacci sequence up to 4 million</h3>
+
+    <p>The array is: <span id='fibArray'></span></p>
+
+    <script>
     
+    // Make an array with the entire Fibonacci sequence up to 4 million
+        var fib = [1,2];
+        
+        while (fib[fib.length - 1] < 4000001) {
+            fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
+        };
+        
+        fib.pop();
+
+        document.getElementById('fibArray').innerHTML = fib
+    
+    </script>
+
+    <h3>Remove the odd terms</h3>
+    <p>The new array is: <span id='fibEven'></span></p>
+
+    <script>
+        // Remove the odd terms
+        var fibEven = [];
+        
+        for (var i = 0; i < fib.length; i++) {
+            if (fib[i] % 2 === 0) {
+                fibEven.push(fib[i]);
+            };
+        };
+        
+        document.getElementById('fibEven').innerHTML = fibEven
+    
+    </script>
+    
+    <h3>Find the total of the array</h3>
+    <p>The total is: <span id='total' color='red'></span></p>
+
+    <script>
+        // Find the total of the array
+               
+        function getSum(total, num) {
+            return total + Math.round(num);
+        }
+        
+        var total = fibEven.reduce(getSum, 0);
+
+        document.getElementById('total').innerHTML = total
+     
+    </script>
 </body>
 </html>
