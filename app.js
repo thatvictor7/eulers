@@ -37,3 +37,6 @@ function getSum(total, num) {
 var total = fibEven.reduce(getSum, 0);
 
 console.log(total)
+
+
+//this is a test for github
